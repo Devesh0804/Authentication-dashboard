@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2'
+import { type } from "os";
 
 
 
@@ -23,6 +25,9 @@ const userSchema = new mongoose.Schema({
         type : String,
         require : true
     },
+    public_id :{
+   type:String
+    },
     created_At : {
         type : Date,
         default : Date.now
@@ -30,7 +35,7 @@ const userSchema = new mongoose.Schema({
 })
 
 
-
+userSchema.plugin(mongoosePaginate)
 const userModel = mongoose.model('users',userSchema);
 
 

@@ -1,0 +1,73 @@
+<%- include('navbar') %>
+
+<center>
+    <h1>Update value </h1>
+
+
+
+<form class="shadow p-3 mb-5 bg-body-tertiary rounded m-5" action="/crudRoutes/update/<%= data._id %>" method="post" enctype="multipart/form-data">
+
+  <div class="row mb-3 m-5">
+    <label for="inputEmail3" class="col-sm-2 col-form-label" value="">Sid</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control rounded-3" id="inputEmail3" name="id" value="<%= data._id %>" readonly>
+    </div> 
+  </div>
+  <div class="row mb-2 m-5">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control rounded-3" id="inputPassword3" name="username" value="<%= data.username %>">
+    </div>
+  </div>
+   <div class="row mb-2 m-5">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control rounded-3" id="inputPassword3" name="user_email" value="<%= data.user_email %>">
+    </div>
+  </div>
+   <!-- <div class="row mb-2 m-5">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">City</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control rounded-3" id="inputPassword3" name="city" value="<%= data.city %>">
+    </div>
+  </div> -->
+
+  <!-- <div class="row mb-2 m-5">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Department</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control rounded-3" id="inputPassword3" name="dept" value="<%= data.dept %>">
+    </div>
+  </div> -->
+  
+  
+  <!-- <div class="row mb-2 m-5">
+  <label for="formFile" class="col-sm-2 form-label">IMAGE UPLOADING</label>
+      <div class="col-sm-5">  
+  <input class="form-control rounded-3" type="file" name="photo" id="formFile">
+  </div>
+</div>
+ -->
+
+  <div class="row mb-2 m-5">
+  <label for="formFile" class="col-sm-2 form-label">Upload Image</label>
+      <div class="col-sm-5">  
+  <input class="form-control rounded-3" type="file" name="photo" id="formFile">
+  </div>
+</div>
+  
+  
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary m-3">Update</button>
+</form>
+</center>
+
+
+
+
+
+
+
+
+<%- include('footer') %>

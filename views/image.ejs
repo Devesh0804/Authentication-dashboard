@@ -1,0 +1,16 @@
+<%- include('navbar')%>
+
+
+<center>
+
+
+<% if(data.userImage) { %>
+<img src="<%= data.userImage %>" alt="image" width="300" height="auto" class="d-flex justify-content-center mt-5" >
+
+<% } else { %>
+  <h1>User dosent have an image</h1>
+<% } %>
+
+</center>
+
+<%- include('footer') %>

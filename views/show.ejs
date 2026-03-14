@@ -1,0 +1,61 @@
+<%- include('navbar') %>
+ 
+<center>
+  <div class="table-responsive ">
+ <table class="table ">
+
+  <thead align="center">
+    <tr>
+      <th scope="col">Sid</th>
+      <th scope="col">Name</th>
+      <th scope="col">User Email</th>
+      <!-- <th scope="col">City</th>
+      <th scope="col">Department</th> -->
+      <th scope="col">buttons</th>
+      
+    </tr>
+  </thead>
+  <tbody class="table-group-divider" align="center">
+    <% Data.map((values,index)=>{ %>
+         
+    <tr>
+      <th scope="row"><%= values._id  %></th>
+      <td><%= values.username %></td>
+      <td><%= values.user_email %></td>
+      <!-- <td><%= values.city %></td>
+      <td><%= values.dept %></td> -->
+      <!-- <td>></td> -->
+    
+      <td>
+        <a type="button" href="/crudRoutes/update/<%= values._id %>" class="btn btn-outline-info mx-auto">Update</a>
+        <a type="button" href="/crudRoutes/delete/<%= values._id%>" class="btn btn-outline-primary mx-auto">Delete</a>
+        <a type="button" href="/crudRoutes/view/<%= values._id %>" class="btn btn-outline-dark mx-auto">Read</a>
+        <a type="button" href="/crudRoutes/image/<%= values._id %>" class="btn btn-outline-dark mx-auto">Image</a>
+      </td>
+
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+</div>
+<center>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    
+    <% let pageClass = hasPrevPage ? " " : "disabled"%>
+    <li class="page-item <%= pageClass %>"><a class="page-link" href="/read/?page=<%=prevPage %>">Previous</a></li>
+  
+  
+    <%for(let p = 1; p<= totalPages ; p++){
+         let activepage = page == p ? "active" : " " 
+         %>
+    <li class="page-item <%= activepage %>"><a class="page-link" href="/read/?page=<%= p %>"><%= p %></a></li>
+   <% } %>
+    
+   <% let nextClass = hasNextPage ? " " : "disabled" %> 
+   <li class="page-item <%= nextClass %> "><a class="page-link" href="/read/?page=<%=nextPage %>">Next</a></li>
+  </ul>
+</nav>
+</center>
+</center>
+<%- include('footer') %>

@@ -1,0 +1,17 @@
+<%- include('navbar') %>
+
+<center>
+    <% if(message){
+        %>
+        <span>
+            <h1><%= message %></h1>
+        </span>
+    <% } else { %>
+        <span>
+            page not found
+        </span>
+   <% } %>
+</center>
+
+
+<%- include('footer') %>

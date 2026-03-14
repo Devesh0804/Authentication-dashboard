@@ -70,8 +70,8 @@ router.post('/login',async(req,res)=>{
 
     )
 
-req.session.jwt = token;
-return res.redirect('/home')
+req.session.jwt = token;    
+return res.redirect('/crudRoutes/read')
     }
     else{
         res.render('login',({message : "Enter the above details !!"}))
@@ -93,7 +93,7 @@ router.get('/auth/google',
 )
 
 router.get('/auth/google/callback', passport.authenticate("google",{ failureRedirect:'/login'}),(req,res)=>{
-    console.log(req.user);
+    // console.log(req.user);
     let token = jwt.sign({username:req.user.username},
         process.env.SECRET_KEY ,
         {expiresIn:"1h"}
@@ -101,20 +101,14 @@ router.get('/auth/google/callback', passport.authenticate("google",{ failureRedi
 
     )
     req.session.jwt = token;
-    res.redirect('/home')
+    res.redirect('/crudRoutes/read')
     
 }
 )
 
 
 
-router.get('/home',userAuth, (req,res)=>{
-    try {
-        res.render('main')
-    } catch (error) {
-        res.send(err)
-    }
-})
+
 
 
 
