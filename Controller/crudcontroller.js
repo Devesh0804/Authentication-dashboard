@@ -164,7 +164,9 @@ export const deleteData = async (req, res) => {
     
     let user = await StudentModel.findById(req.params.id);
     let imageID = user.public_id;
+    if(imageID){
     await cloudinary.uploader.destroy(imageID);
+    }
     await StudentModel.deleteOne({ _id: req.params.id })
     res.redirect('/crudRoutes/read');
 
