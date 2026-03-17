@@ -136,12 +136,13 @@ export const updateData = async (req, res) => {
     
         let imageUrl = UpdatedImage.url;
         let public_id = UpdatedImage.public_id;
-        if(!UpdatedImage){
-            userImage = "";
-            ImageID = "";
-        }else{
+        if(UpdatedImage){
             userImage = imageUrl;
             ImageID = public_id
+        }
+        else{
+            userImage = user.userImage;
+            ImageID  = user.public_id;
         }
        }
        if(req.file.path && fs.existsSync(req.file.path)){
