@@ -78,11 +78,14 @@ export const insertData = async (req, res) => {
           
             student.userImage = image;
             student.public_id = public_id;
+            if(req.file && fs.existsSync(req.file.path)){
+                fs.unlinkSync(req.file.path);
+            }
             
         }
 
         let newstudent = await student.save();
-        fs.unlinkSync(req.file.path)
+
 
        res.redirect('/crudRoutes/read')   
 
@@ -141,7 +144,9 @@ export const updateData = async (req, res) => {
             ImageID = public_id
         }
        }
+       if(req.file.path && fs.existsSync(req.file.path)){
        fs.unlinkSync(req.file.path)
+       }
       await StudentModel.findByIdAndUpdate({_id : req.params.id} , {$set:
         {username : username ,
          user_email : user_email, 
@@ -151,7 +156,7 @@ export const updateData = async (req, res) => {
            res.redirect('/crudRoutes/read')
 
     } catch (error) {
-
+            res.status(500).json({message : error.message})
     }
 
 

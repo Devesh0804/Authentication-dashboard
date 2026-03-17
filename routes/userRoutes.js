@@ -93,7 +93,7 @@ router.get('/auth/google',
 )
 
 router.get('/auth/google/callback', passport.authenticate("google",{ failureRedirect:'/login'}),(req,res)=>{
-    // console.log(req.user);
+    // console.log(req.user);   
     let token = jwt.sign({username:req.user.username},
         process.env.SECRET_KEY ,
         {expiresIn:"1h"}
